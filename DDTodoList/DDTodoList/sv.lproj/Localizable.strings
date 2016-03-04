@@ -1,0 +1,9 @@
+/* 
+  Localizable.strings
+  DDTodoList
+
+  Created by Daniel Djurfelter on 03/03/16.
+  Copyright © 2016 Daniel Djurfelter. All rights reserved.
+*/
+
+"NewItem" = "Ny uppgift";
