@@ -21,7 +21,7 @@
 @implementation DDListItemsView
 
 -(void)viewDidLoad {
-    [self setTitle:NSStringFromClass([self class])];
+    [self setTitle:NSLocalizedString(@"ProductName", nil)];
     [self setupTableView];
 }
 
@@ -64,7 +64,6 @@
         [self.tableView insertRowsAtIndexPaths:indexPaths
                               withRowAnimation:UITableViewRowAnimationFade];
         DDTodoTableViewCell *cell = [self.tableView cellForRowAtIndexPath:indexPath];
-        cell.delegate = self;
         [cell.textField becomeFirstResponder];
     });
 }
@@ -98,13 +97,25 @@
 #pragma mark - Keyboard event handler
 
 -(void)registerForKeyboardEvents {
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillShow:) name:UIKeyboardWillShowNotification object:nil];
-     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillHide) name:UIKeyboardWillHideNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(keyboardWillShow:)
+                                                 name:UIKeyboardWillShowNotification
+                                               object:nil];
+    
+     [[NSNotificationCenter defaultCenter] addObserver:self
+                                              selector:@selector(keyboardWillHide)
+                                                  name:UIKeyboardWillHideNotification
+                                                object:nil];
 }
 
 -(void)unregisterForKeyboardEvents {
-    [[NSNotificationCenter defaultCenter] removeObserver:self name:UIKeyboardWillShowNotification object:nil];
-     [[NSNotificationCenter defaultCenter] removeObserver:self name:UIKeyboardWillHideNotification object:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:self
+                                                    name:UIKeyboardWillShowNotification
+                                                  object:nil];
+    
+     [[NSNotificationCenter defaultCenter] removeObserver:self
+                                                     name:UIKeyboardWillHideNotification
+                                                   object:nil];
 }
 
 -(void)keyboardWillShow:(NSNotification*)aNotification {

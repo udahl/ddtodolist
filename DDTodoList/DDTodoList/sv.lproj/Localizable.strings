@@ -6,4 +6,6 @@
   Copyright © 2016 Daniel Djurfelter. All rights reserved.
 */
 
+"ProductName" = "Att göra";
 "NewItem" = "Ny uppgift";
+"Done" = "Klar";

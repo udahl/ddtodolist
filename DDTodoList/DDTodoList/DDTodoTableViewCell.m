@@ -26,13 +26,13 @@
     return NO;
 }
 
--(BOOL)textFieldShouldEndEditing:(UITextField *)textField {
+-(BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string {
     [self notifyDelegate];
     return YES;
 }
 
 -(void)notifyDelegate {
-    [self.delegate tableViewCelldidFinishEditing:self];
+    [self.cellDelegate tableViewCelldidFinishEditing:self];
 }
 
 @end

@@ -103,7 +103,7 @@ static NSString* DDTodoListViewModelStorageKey = @"DDTodoListItems.items";
 
 -(void)updateItemAtIndex:(NSInteger)itemIndex withTitle:(NSString*)title {
     DDTodoItem *item = [self.listItems objectAtIndex:itemIndex];
-    if (item.title && title && ![item.title isEqualToString:title]) {
+    if (title && ![title isEqualToString:item.title]) {
         [self.listItems objectAtIndex:itemIndex].title = title;
         [self syncronize];
     }

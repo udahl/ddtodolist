@@ -6,4 +6,6 @@
   Copyright © 2016 Daniel Djurfelter. All rights reserved.
 */
 
+"ProductName" = "Todo";
 "NewItem" = "New item";
+"Done" = "Done";

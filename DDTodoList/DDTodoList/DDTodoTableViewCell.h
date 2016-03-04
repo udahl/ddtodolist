@@ -18,6 +18,6 @@
 @interface DDTodoTableViewCell : UITableViewCell
 
 @property (weak, nonatomic) IBOutlet UITextField *textField;
-@property (weak, nonatomic) id<DDTodoTableViewCellDelegate> delegate;
+@property (weak, nonatomic) id<DDTodoTableViewCellDelegate> cellDelegate;
 
 @end
