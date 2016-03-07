@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A57B0E581C8D903000C12991 /* DDUINavigationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A57B0E571C8D903000C12991 /* DDUINavigationViewController.m */; };
 		A5C2607D1C88535500A41EE1 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = A5C2607C1C88535500A41EE1 /* main.m */; };
 		A5C260801C88535500A41EE1 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = A5C2607F1C88535500A41EE1 /* AppDelegate.m */; };
 		A5C260861C88535500A41EE1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A5C260841C88535500A41EE1 /* Main.storyboard */; };
@@ -32,6 +33,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		A57B0E561C8D903000C12991 /* DDUINavigationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDUINavigationViewController.h; sourceTree = "<group>"; };
+		A57B0E571C8D903000C12991 /* DDUINavigationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDUINavigationViewController.m; sourceTree = "<group>"; };
 		A5C260781C88535400A41EE1 /* DDTodoList.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DDTodoList.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A5C2607C1C88535500A41EE1 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		A5C2607E1C88535500A41EE1 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -74,6 +77,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		A57B0E551C8D8FF300C12991 /* BaseViews */ = {
+			isa = PBXGroup;
+			children = (
+				A57B0E561C8D903000C12991 /* DDUINavigationViewController.h */,
+				A57B0E571C8D903000C12991 /* DDUINavigationViewController.m */,
+			);
+			name = BaseViews;
+			sourceTree = "<group>";
+		};
 		A5C2606F1C88535400A41EE1 = {
 			isa = PBXGroup;
 			children = (
@@ -95,6 +107,7 @@
 		A5C2607A1C88535500A41EE1 /* DDTodoList */ = {
 			isa = PBXGroup;
 			children = (
+				A57B0E551C8D8FF300C12991 /* BaseViews */,
 				A5C260A01C88538800A41EE1 /* Scenes */,
 				A5C2607E1C88535500A41EE1 /* AppDelegate.h */,
 				A5C2607F1C88535500A41EE1 /* AppDelegate.m */,
@@ -290,6 +303,7 @@
 				A5C260B21C887BD000A41EE1 /* DDTodoTableViewCell.m in Sources */,
 				A5C260801C88535500A41EE1 /* AppDelegate.m in Sources */,
 				A5C2607D1C88535500A41EE1 /* main.m in Sources */,
+				A57B0E581C8D903000C12991 /* DDUINavigationViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
