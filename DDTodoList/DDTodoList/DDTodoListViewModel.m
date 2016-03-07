@@ -85,7 +85,23 @@ static NSString* DDTodoListViewModelStorageKey = @"DDTodoListItems.items";
     return listItems;
 }
 
+/*
+ Cancel any previous qued up request to update storage and
+ scedule a new request.
+ */
 -(void)syncronize {
+    static double requestDelay = .5;
+    
+    [NSObject cancelPreviousPerformRequestsWithTarget:self
+                                             selector:@selector(updateState)
+                                               object:nil];
+    
+    [self performSelector:@selector(updateState)
+               withObject:nil
+               afterDelay:requestDelay];
+}
+
+-(void)updateState {
     NSMutableArray *array = [NSMutableArray new];
     for(DDTodoItem* item in self.listItems) {
         [array addObject:(item.title ? item.title : @"")];
