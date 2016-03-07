@@ -11,7 +11,7 @@
 #import "DDTodoItem.h"
 #import "DDTodoTableViewCell.h"
 
-@interface DDListItemsView ()<UITableViewDelegate, DDTodoTableViewCellDelegate>
+@interface DDListItemsView ()<UITableViewDelegate>
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (strong, nonatomic) DDTodoListViewModel *viewModel;
@@ -84,14 +84,6 @@
     btn.backgroundColor = [UIColor greenColor];
 
     return @[btn];
-}
-
-#pragma mark - DDTodoTableViewCellDelegate
-
--(void)tableViewCelldidFinishEditing:(DDTodoTableViewCell *)cell
-{
-    NSIndexPath *indexPath = [self.tableView indexPathForCell:cell];
-    [self.viewModel updateItemAtIndex:indexPath.row withTitle:cell.textField.text];
 }
 
 #pragma mark - Keyboard event handler

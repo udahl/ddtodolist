@@ -12,7 +12,7 @@
 
 static NSString* DDTodoListViewModelStorageKey = @"DDTodoListItems.items";
 
-@interface DDTodoListViewModel ()
+@interface DDTodoListViewModel ()<DDTodoTableViewCellDelegate>
 
 @property (nonatomic, strong) NSMutableArray<DDTodoItem*> *listItems;
 
@@ -38,6 +38,8 @@ static NSString* DDTodoListViewModelStorageKey = @"DDTodoListItems.items";
 
 -(void)configureCell:(DDTodoTableViewCell*)cell withItemAtIndexPath:(NSIndexPath*)indexPath {
     DDTodoItem *todo = [self.listItems objectAtIndex:indexPath.row];
+    cell.cellDelegate  = self;
+    cell.indexPath = indexPath;
     cell.textField.text = todo.title;
 }
 
@@ -54,6 +56,13 @@ static NSString* DDTodoListViewModelStorageKey = @"DDTodoListItems.items";
         default:
             break;
     }
+}
+
+#pragma mark - DDTodoTableViewCellDelegate
+
+-(void)tableViewCelldidFinishEditing:(DDTodoTableViewCell *)cell
+{
+    [self updateItemAtIndex:cell.indexPath.row withTitle:cell.textField.text];
 }
 
 #pragma mark - Properties

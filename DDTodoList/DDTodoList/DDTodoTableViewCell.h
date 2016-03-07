@@ -19,5 +19,6 @@
 
 @property (weak, nonatomic) IBOutlet UITextField *textField;
 @property (weak, nonatomic) id<DDTodoTableViewCellDelegate> cellDelegate;
+@property (weak, nonatomic) NSIndexPath *indexPath;
 
 @end
