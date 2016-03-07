@@ -80,8 +80,6 @@
                                                                             commitEditingStyle:UITableViewCellEditingStyleDelete
                                                                              forRowAtIndexPath:indexPath];
                                                                  }];
-    
-    btn.backgroundColor = [UIColor greenColor];
 
     return @[btn];
 }
