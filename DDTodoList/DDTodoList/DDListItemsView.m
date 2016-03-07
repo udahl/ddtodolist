@@ -10,11 +10,13 @@
 #import "DDTodoListViewModel.h"
 #import "DDTodoItem.h"
 #import "DDTodoTableViewCell.h"
+#import "DDKeyboardEventHandler.h"
 
 @interface DDListItemsView ()<UITableViewDelegate>
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (strong, nonatomic) DDTodoListViewModel *viewModel;
+@property (strong, nonatomic) DDKeyboardEventHandler* keyboardHandler;
 
 @end
 
@@ -39,13 +41,15 @@
 
 -(void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
-    [self registerForKeyboardEvents];
+    [self.keyboardHandler addKeyboardNotificationObserver];
 }
 
 -(void)viewWillDisappear:(BOOL)animated {
-    [self unregisterForKeyboardEvents];
+    [self.keyboardHandler removeKeyboardNotificationObserver];
     [super viewWillDisappear:animated];
 }
+
+#pragma mark - Properties
 
 -(DDTodoListViewModel*)viewModel {
     if(!_viewModel) {
@@ -53,6 +57,14 @@
     }
     
     return _viewModel;
+}
+
+-(DDKeyboardEventHandler*)keyboardHandler {
+    if (!_keyboardHandler) {
+        _keyboardHandler = [[DDKeyboardEventHandler alloc] initWithResponder:self.tableView];
+    }
+    
+    return _keyboardHandler;
 }
 
 - (IBAction)addItem:(id)sender {
@@ -83,49 +95,5 @@
 
     return @[btn];
 }
-
-#pragma mark - Keyboard event handler
-
--(void)registerForKeyboardEvents {
-    [[NSNotificationCenter defaultCenter] addObserver:self
-                                             selector:@selector(keyboardWillShow:)
-                                                 name:UIKeyboardWillShowNotification
-                                               object:nil];
-    
-     [[NSNotificationCenter defaultCenter] addObserver:self
-                                              selector:@selector(keyboardWillHide)
-                                                  name:UIKeyboardWillHideNotification
-                                                object:nil];
-}
-
--(void)unregisterForKeyboardEvents {
-    [[NSNotificationCenter defaultCenter] removeObserver:self
-                                                    name:UIKeyboardWillShowNotification
-                                                  object:nil];
-    
-     [[NSNotificationCenter defaultCenter] removeObserver:self
-                                                     name:UIKeyboardWillHideNotification
-                                                   object:nil];
-}
-
--(void)keyboardWillShow:(NSNotification*)aNotification {
-    NSDictionary* info = [aNotification userInfo];
-    CGSize keyboardSize = [[info objectForKey:UIKeyboardFrameBeginUserInfoKey] CGRectValue].size;
-    [self updateTableViewBottomInsets:keyboardSize.height];
-}
-
--(void)keyboardWillHide {
-    [self updateTableViewBottomInsets:.0];
-}
-
-
--(void)updateTableViewBottomInsets:(CGFloat)inset {
-    
-    UIEdgeInsets contentInsets = self.tableView.contentInset;
-    contentInsets.bottom = inset;
-    self.tableView.contentInset = contentInsets;
-    self.tableView.scrollIndicatorInsets = contentInsets;
-}
-
 
 @end
